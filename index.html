@@ -13,20 +13,19 @@
     <img id="imagen" src="https://4.bp.blogspot.com/-dFZSF8ZESBM/VIBYiGDfltI/AAAAAAABYbM/bNuPZ0bUHko/s0/Constance%2BHalaveli%2BMaldives%2BUHD.jpg" alt="" />
     <img id="imagen" src="https://4.bp.blogspot.com/-dFZSF8ZESBM/VIBYiGDfltI/AAAAAAABYbM/bNuPZ0bUHko/s0/Constance%2BHalaveli%2BMaldives%2BUHD.jpg" alt="" />
     <img id="imagen" src="https://4.bp.blogspot.com/-dFZSF8ZESBM/VIBYiGDfltI/AAAAAAABYbM/bNuPZ0bUHko/s0/Constance%2BHalaveli%2BMaldives%2BUHD.jpg" alt="" />
-    <img id="imagen" src="https://4.bp.blogspot.com/-dFZSF8ZESBM/VIBYiGDfltI/AAAAAAABYbM/bNuPZ0bUHko/s0/Constance%2BHalaveli%2BMaldives%2BUHD.jpg" alt="" />
-    <img id="imagen" src="https://4.bp.blogspot.com/-dFZSF8ZESBM/VIBYiGDfltI/AAAAAAABYbM/bNuPZ0bUHko/s0/Constance%2BHalaveli%2BMaldives%2BUHD.jpg" alt="" />
-    <img id="imagen" src="https://4.bp.blogspot.com/-dFZSF8ZESBM/VIBYiGDfltI/AAAAAAABYbM/bNuPZ0bUHko/s0/Constance%2BHalaveli%2BMaldives%2BUHD.jpg" alt="" />
-    <img id="imagen" src="https://4.bp.blogspot.com/-dFZSF8ZESBM/VIBYiGDfltI/AAAAAAABYbM/bNuPZ0bUHko/s0/Constance%2BHalaveli%2BMaldives%2BUHD.jpg" alt="" />
-    <img id="imagen" src="https://4.bp.blogspot.com/-dFZSF8ZESBM/VIBYiGDfltI/AAAAAAABYbM/bNuPZ0bUHko/s0/Constance%2BHalaveli%2BMaldives%2BUHD.jpg" alt="" />
-    <img id="imagen" src="https://4.bp.blogspot.com/-dFZSF8ZESBM/VIBYiGDfltI/AAAAAAABYbM/bNuPZ0bUHko/s0/Constance%2BHalaveli%2BMaldives%2BUHD.jpg" alt="" />
-    <img id="imagen" src="https://4.bp.blogspot.com/-dFZSF8ZESBM/VIBYiGDfltI/AAAAAAABYbM/bNuPZ0bUHko/s0/Constance%2BHalaveli%2BMaldives%2BUHD.jpg" alt="" />
+
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script src="js/please-wait.min.js" charset="utf-8"></script>
     <script type="text/javascript">
-      window.loading_screen = window.pleaseWait({
-        backgroundColor: '#f46d3b',
-        loadingHtml: "<p class='loading-message'>A good day to you fine user!</p>"
+      var  loading = window.pleaseWait({
+        logo : 'img/logo.png',
+        backgroundColor: 'rgb(31, 50, 60)',
+        loadingHtml: '<div class="sk-folding-cube"><div class="sk-cube1 sk-cube"></div><div class="sk-cube2 sk-cube"></div><div class="sk-cube4 sk-cube"></div><div class="sk-cube3 sk-cube"></div></div>'
       });
+      window.loading_screen = loading ;
+      $(window).on('load', function(){
+        loading.finish()
+      })
 
     </script>
   </body>
