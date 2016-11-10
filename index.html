@@ -6,27 +6,51 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link href="css/please-wait.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="js/please-wait.min.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="css/dropzone.css" media="screen" title="no title">
+    <link rel="stylesheet" href="css/bootstrap.min.css" media="screen" title="no title">
     <link rel="stylesheet" href="css/styles.css" media="screen" title="no title">
   </head>
   <body>
-    <img id="imagen" src="https://4.bp.blogspot.com/-dFZSF8ZESBM/VIBYiGDfltI/AAAAAAABYbM/bNuPZ0bUHko/s0/Constance%2BHalaveli%2BMaldives%2BUHD.jpg" alt="" />
-    <img id="imagen" src="https://4.bp.blogspot.com/-dFZSF8ZESBM/VIBYiGDfltI/AAAAAAABYbM/bNuPZ0bUHko/s0/Constance%2BHalaveli%2BMaldives%2BUHD.jpg" alt="" />
-    <img id="imagen" src="https://4.bp.blogspot.com/-dFZSF8ZESBM/VIBYiGDfltI/AAAAAAABYbM/bNuPZ0bUHko/s0/Constance%2BHalaveli%2BMaldives%2BUHD.jpg" alt="" />
-    <img id="imagen" src="https://4.bp.blogspot.com/-dFZSF8ZESBM/VIBYiGDfltI/AAAAAAABYbM/bNuPZ0bUHko/s0/Constance%2BHalaveli%2BMaldives%2BUHD.jpg" alt="" />
-
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-    <script src="js/please-wait.min.js" charset="utf-8"></script>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="dropzone" id="myDrop">
+            <div class="fallback">
+              <input name="file" type="file" multiple />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="js/loading.js" charset="utf-8"></script>
+    <script src="js/bootstrap.min.js" charset="utf-8"></script>
+    <script src="js/dropzone.js" charset="utf-8"></script>
     <script type="text/javascript">
-      var  loading = window.pleaseWait({
-        logo : 'img/logo.png',
-        backgroundColor: 'rgb(31, 50, 60)',
-        loadingHtml: '<div class="sk-folding-cube"><div class="sk-cube1 sk-cube"></div><div class="sk-cube2 sk-cube"></div><div class="sk-cube4 sk-cube"></div><div class="sk-cube3 sk-cube"></div></div>'
-      });
-      window.loading_screen = loading ;
-      $(window).on('load', function(){
-        loading.finish()
-      })
+      $("div#myDrop").dropzone({
+        url: "php/upload.php",
+        addRemoveLinks: true,
+        dictDefaultMessage : 'Suelte o Click aquí, para subir archivos.',
+        removedfile: function(file) {
+          file.previewElement.addEventListener("click", function() {
+            this.removeFile(file);
+          });
+          var name = file.name;
+          console.log(name);
+          /*
+          $.ajax({
+              type: 'POST',
+              url: 'delete.php',
+              data: "id="+name,
+              dataType: 'html'
+          });
+          var _ref;
+          return (_ref = file.previewElement) != null ? _ref.parentNode.removeChild(file.previewElement) : void 0;
+          */
+        }
 
+      });
     </script>
   </body>
 </html>
