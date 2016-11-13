@@ -16,20 +16,51 @@
             <h3>Iniciar Sesion</h3>
             <hr>
           </form>
+          <div class="row">
+          </div>
         </div>
       </div>
     </div>
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script src="js/bootstrap.min.js" charset="utf-8"></script>
     <script type="text/javascript">
-      var datos = {
-        sayHello : function() {
-            console.log('hello');
+
+      var components = {
+        0 : {
+          $lbl : 'Nombre:',
+          $nm : 'nombre',
+          $tp : 'text',
+          $ph : 'Ingrese su Nombre',
+          $val : ''
         },
-        myName : 'Rebecca',
-        name : 'Alvarez'
+        1 : {
+          $lbl : 'DNI:',
+          $nm : 'dni',
+          $tp : 'number',
+          $ph : 'Ingrese DNI',
+          $val : ''
+        }
       };
-      console.log(Object.keys(datos).length);
+
+      for (var i = 0; i < objSize(components); i++) {
+        $("#divisor").append(`<div class="form-group">
+          <label for="">${components[i]['$lbl']}</label>
+          <input
+            type="${components[i]['$tp']}"
+            name="${components[i]['$nm']}"
+            value="${components[i]['$val']}"
+            placeholder="${components[i]['$ph']}"
+            class="form-control">
+        </div>`)
+        $("#output").append(`<div class="form-group">
+          <label for="">${components[i]['$lbl']}</label>
+          <input type="${components[i]['$tp']}" name="${components[i]['$nm']}" value="${components[i]['$val']}" placeholder="${components[i]['$ph']}" class="form-control">
+        </div>`)
+      }
+
+      function objSize(p) {
+        return Object.keys(p).length
+      }
     </script>
   </body>
 </html>
