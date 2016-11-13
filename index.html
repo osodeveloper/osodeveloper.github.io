@@ -16,41 +16,27 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <div class="dropzone" id="myDrop">
-            <div class="fallback">
-              <input name="file" type="file" multiple />
-            </div>
-          </div>
+          <form class="col-md-4 col-md-offset-4" action="index.html" method="post"  id="divisor">
+            <h3>Iniciar Sesion</h3>
+            <hr>
+          </form>
         </div>
       </div>
     </div>
+
     <script src="js/loading.js" charset="utf-8"></script>
     <script src="js/bootstrap.min.js" charset="utf-8"></script>
     <script src="js/dropzone.js" charset="utf-8"></script>
     <script type="text/javascript">
-      $("div#myDrop").dropzone({
-        url: "php/upload.php",
-        addRemoveLinks: true,
-        dictDefaultMessage : 'Suelte o Click aquí, para subir archivos.',
-        removedfile: function(file) {
-          file.previewElement.addEventListener("click", function() {
-            this.removeFile(file);
-          });
-          var name = file.name;
-          console.log(name);
-          /*
-          $.ajax({
-              type: 'POST',
-              url: 'delete.php',
-              data: "id="+name,
-              dataType: 'html'
-          });
-          var _ref;
-          return (_ref = file.previewElement) != null ? _ref.parentNode.removeChild(file.previewElement) : void 0;
-          */
-        }
+      var f_g = `<div class="form-group">
+        <label class="control-label">Nombres:</label>
+        <input type="text" name="name" class="form-control" value="">
+      </div>`
+      $("form#divisor").append(f_g)
+      var datos = {
 
-      });
+      }
+
     </script>
   </body>
 </html>
