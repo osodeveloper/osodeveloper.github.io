@@ -6,61 +6,59 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="css/bootstrap.min.css" media="screen" title="no title">
+    <link rel="stylesheet" href="css/prism.css" media="screen" title="no title">
     <link rel="stylesheet" href="css/styles.css" media="screen" title="no title">
   </head>
   <body>
-    <div class="container">
+    <div class="container-fluid">
       <div class="row">
-        <div class="col-md-12">
-          <form class="col-md-4 col-md-offset-4" action="index.html" method="post"  id="divisor">
-            <h3>Iniciar Sesion</h3>
-            <hr>
+        <div class="col-md-4">
+          <h3 class="text-center">Configuraciones</h3>
+          <hr>
+          <form id="form_main" class="form-default">
+            <div class="form-group">
+              <label>Label / Etiqueta <span class="glyphicon glyphicon-tag"></span> :</label>
+              <input type="text" value="" id="v1" class="form-control" placeholder="Ej.: 'Nombre:', 'Correo:'">
+            </div>
+            <div class="form-group">
+              <label>Name / Nombre clave del Input</label>
+              <input type="text" value="" id="v2" class="form-control" placeholder="Ej.: 'nombre:', 'fecha'">
+            </div>
+            <div class="form-group">
+              <label>Type / Tipo:</label>
+              <input type="text" value="" id="v3" class="form-control" placeholder="Ej.: 'number', 'text'">
+            </div>
+            <div class="form-group">
+              <label>Placeholder: </label>
+              <input type="text" value="" id="v4" class="form-control" placeholder="Ej.: 'Escriba su Nombre', 'Correo Electronico'">
+            </div>
+            <div class="form-group">
+              <label>Value / Valor:</label>
+              <input type="text" value="" id="v5" class="form-control" placeholder="El valor con el que quieras iniciar el input">
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <button type="button" id="btn_guardar" onclick="insertar()" class="btn btn-default btn-block" name="button">Guardar</button>
+              </div>
+              <div class="col-md-6">
+                <button type="button" id="btn_generar" onclick="generar(components)" class="btn btn-primary btn-block" name="button">Generar</button>
+              </div>
+            </div>
           </form>
-          <div class="row">
-          </div>
+        </div>
+        <div class="col-md-8">
+          <h3 class="text-center text-info">Resultado:</h3>
+          <pre>
+            <code class="language-markup" id="result">
+              
+            </code>
+          </pre>
         </div>
       </div>
     </div>
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script src="js/bootstrap.min.js" charset="utf-8"></script>
-    <script type="text/javascript">
-
-      var components = {
-        0 : {
-          $lbl : 'Nombre:',
-          $nm : 'nombre',
-          $tp : 'text',
-          $ph : 'Ingrese su Nombre',
-          $val : ''
-        },
-        1 : {
-          $lbl : 'DNI:',
-          $nm : 'dni',
-          $tp : 'number',
-          $ph : 'Ingrese DNI',
-          $val : ''
-        }
-      };
-
-      for (var i = 0; i < objSize(components); i++) {
-        $("#divisor").append(`<div class="form-group">
-          <label for="">${components[i]['$lbl']}</label>
-          <input
-            type="${components[i]['$tp']}"
-            name="${components[i]['$nm']}"
-            value="${components[i]['$val']}"
-            placeholder="${components[i]['$ph']}"
-            class="form-control">
-        </div>`)
-        $("#output").append(`<div class="form-group">
-          <label for="">${components[i]['$lbl']}</label>
-          <input type="${components[i]['$tp']}" name="${components[i]['$nm']}" value="${components[i]['$val']}" placeholder="${components[i]['$ph']}" class="form-control">
-        </div>`)
-      }
-
-      function objSize(p) {
-        return Object.keys(p).length
-      }
-    </script>
+    <script src="js/prism.js" charset="utf-8"></script>
+    <script src="js/generatorForm.js" charset="utf-8"></script>
   </body>
 </html>
