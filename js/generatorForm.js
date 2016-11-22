@@ -5,8 +5,7 @@ var v4 = $("#v4")
 var v5 = $("#v5")
 var components = {}
 
-var box = `
-<form class="" action="index.html" method="post">`
+var box = ''
 
 function escapeHtml(unsafe) {
   return unsafe
@@ -17,18 +16,24 @@ function escapeHtml(unsafe) {
        .replace(/'/g, "&#039;");
 }
 function insertar() {
-  var cant = cantidad(components)
-  components[cant] = {
-    $lbl : v1.val().trim(),
-    $nm : v2.val().trim(),
-    $tp : v3.val().trim(),
-    $ph : v4.val().trim(),
-    $val : v5.val().trim()
+  if (isFull()) {
+    var cant = cantidad(components)
+    components[cant] = {
+      $lbl : v1.val().trim(),
+      $nm : v2.val().trim(),
+      $tp : v3.val().trim(),
+      $ph : v4.val().trim(),
+      $val : v5.val().trim()
+    }
+    for (var i = 1; i < 6; i++) {
+      $("#v" + i).val('')
+    }
+    var now = parseInt($("#now").val())
+    $("#now").val(now + 1)
+    v1.focus()
+  }else {
+    alert("Al menos debes poner un 'name' y un 'type'")
   }
-  for (var i = 1; i < 6; i++) {
-    $("#v" + i).val('')
-  }
-  v1.focus()
 }
 
 function cantidad(p) {
@@ -36,6 +41,9 @@ function cantidad(p) {
 }
 
 function generar(components) {
+  $("#result").html('')
+  box = `
+<form class="" action="index.html" method="post">`
   for (var i = 0; i < cantidad(components); i++) {
     box += `
   <div class="form-group">
@@ -46,4 +54,25 @@ function generar(components) {
   box += `
 </form>`
   $("#result").html(escapeHtml(box))
+}
+function isFull(){
+  if (v2.val().trim() !== "" &&
+      v3.val().trim() !== "") {
+    return true
+  }else {
+    return false;
+  }
+}
+function cambios(e){
+  var p = parseInt(e) - 1
+  if (!components[p]) {
+    $("#now").val(cantidad(components))
+  }else {
+    v1.val(components[p]['$lbl'])
+    v2.val(components[p]['$nm'])
+    v3.val(components[p]['$tp'])
+    v4.val(components[p]['$ph'])
+    v5.val(components[p]['$val'])
+  }
+
 }
