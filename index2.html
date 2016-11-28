@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Form Generator</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="apple-touch-icon" sizes="57x57" href="img/favicon/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="img/favicon/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="img/favicon/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="img/favicon/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="img/favicon/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="img/favicon/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="img/favicon/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
+  <link rel="manifest" href="img/favicon/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="img/favicon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="stylesheet" href="css/bootstrap.min.css" media="screen" title="no title">
+  <link rel="stylesheet" href="css/styles.css" media="screen" title="no title">
+  <style>
+  #lista, #lista2 {
+    border: 2px solid #5275c2;
+    min-height: 80px;
+    list-style-type: none;
+    padding: 10px;
+  }
+  div.alert{
+    margin-bottom: 4px;
+  }
+  </style>
+  <script src="js/jquery.3.min.js"></script>
+  <script src="js/jquery-ui.min.js"></script>
+  <script>
+  $( function() {
+    $( "#lista, #lista2" ).sortable({
+      connectWith: ".resultado"
+    }).disableSelection();
+  } );
+  </script>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <h3>Selecciona, Agrega y Genera!. No puede ser mas facil <span class="glyphicon glyphicon-ok"></span></h3>
+      <hr>
+      <div class="col-md-6">
+        <div class="form-group">
+          <div class="input-group">
+            <select class="form-control" name="" id="opciones">
+              <option value="">Selecciona...</option>
+              <optgroup label="Campos">
+                <option value="input">Input</option>
+                <option value="select">select</option>
+                <option value="textarea">textarea</option>
+                <option value="checkbox">checkbox</option>
+                <option value="radio">radio</option>
+              </optgroup>
+            </select>
+            <span class="input-group-btn">
+              <button class="btn btn-success" type="button" id="agregar">Agregar</button>
+            </span>
+          </div><!-- /input-group -->
+        </div>
+        <ul id="lista" class="resultado col-md-6 col-md-offset-3">
+        </ul>
+        <div class="clearfix">
+        </div>
+        <div class="form-group text-center">
+          <button class="btn btn-success" type="button" id="generar" data-toggle="modal">Generar</button>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <h3 class="text-center">Formulario</h3>
+        <ul id="lista2" class="resultado col-md-6 col-md-offset-3">
+          <!--<li class="ui-state-default"><div class="alert alert-info text-center" role="alert">Input</div></li>-->
+
+        </ul>
+      </div>
+    </div>
+  </div>
+<!-- Modal -->
+<div class="modal fade" id="codigo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Resultado</h4>
+      </div>
+      <div class="modal-body">
+        <pre>
+          <code class="language-markup" id="result">
+
+          </code>
+        </pre>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" id="copiar">Copiar</button>
+      </div>
+    </div>
+  </div>
+</div>
+  <script src="js/generador.js" charset="utf-8"></script>
+  <script src="js/bootstrap.min.js" charset="utf-8"></script>
+</body>
+</html>
