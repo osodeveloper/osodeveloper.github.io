@@ -42,7 +42,7 @@
     <script type="text/javascript">
       $("#entrada").on("keyup", function(){
         var str = $(this).val();
-        var res = str.replace(/a|e|i|o|u/gi, function myFunction(x){return 'i';});
+        var res = str.replace(/a|e|o|u|á|é|ó|ú|â|ê|ô|û|à|è|ò|ù/gi, function myFunction(x){return 'i';});
         $("#salida").val(res)
       })
     </script>
